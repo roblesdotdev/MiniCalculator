@@ -6,3 +6,4 @@ plugins {
     alias(libs.plugins.kotlinter) apply false
 }
 
+apply(from = "buildScripts/git-hooks.gradle")
