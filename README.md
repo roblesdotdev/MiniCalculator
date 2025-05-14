@@ -15,3 +15,7 @@ Material 3. It features a clean, minimal UI with support for both light and dark
 - MVVM pattern
 
 ![image](https://github.com/user-attachments/assets/ae9d15e2-71a1-455d-b496-21da142d16ca)
+
+### Tasks
+
+- formatKotlin: format Kotlin source code according to ktlint rules or warn when auto-format not possible.
