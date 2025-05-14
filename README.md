@@ -20,6 +20,7 @@ Material 3. It features a clean, minimal UI with support for both light and dark
 
 - installGitHooks: Installs Git hooks to auto-check formatting before commits
 - formatKotlin: format Kotlin source code according to ktlint rules or warn when auto-format not possible.
+- detekt: Code smell analysis.
 
 ## 📦 Tech Stack
 
