@@ -1,3 +1,5 @@
+@file:Suppress("FunctionNaming")
+
 package com.roblesdotdev.minicalculator.ui.theme
 
 import android.os.Build
