@@ -39,7 +39,7 @@ fun MCButton(
         Text(
             symbol,
             style = MaterialTheme.typography.headlineLarge.copy(
-                fontSize = 32.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Medium,
             ),
         )
