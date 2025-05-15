@@ -28,12 +28,12 @@ fun MCButton(
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
-            .background(
-                color = MaterialTheme.colorScheme.primaryContainer,
-            ).padding(horizontal = 30.dp, vertical = 24.dp)
             .clickable {
                 onClick()
-            }.then(modifier),
+            }.background(
+                color = MaterialTheme.colorScheme.primaryContainer,
+            ).padding(horizontal = 30.dp, vertical = 24.dp)
+            .then(modifier),
         contentAlignment = Alignment.Center,
     ) {
         Text(

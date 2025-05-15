@@ -34,7 +34,7 @@ fun CalculatorContent(
     Column(modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(48.dp)) {
         Spacer(modifier = Modifier.weight(1f))
         Text(
-            state.lhs + (state.op ?: "") + state.rhs,
+            state.lhs + (state.op?.symbol ?: "") + state.rhs,
             style = MaterialTheme.typography.headlineLarge.copy(
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Medium,
