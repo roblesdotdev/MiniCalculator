@@ -1,6 +1,7 @@
 package com.roblesdotdev.minicalculator.calculator.presentation
 
 import android.content.res.Configuration
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,6 +32,7 @@ fun CalculatorContent(
     state: CalculatorState,
     onEvent: (CalculatorEvent) -> Unit,
 ) {
+    val isDarkTheme = isSystemInDarkTheme()
     Column(modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(48.dp)) {
         Spacer(modifier = Modifier.weight(1f))
         Text(
@@ -52,11 +54,22 @@ fun CalculatorContent(
         ) {
             buttons.forEach { button ->
                 item(span = { GridItemSpan(button.span) }) {
+                    val (containerColor, contentColor) = when (button.type) {
+                        TypeButton.Primary -> Pair(MaterialTheme.colorScheme.primaryContainer, null)
+                        TypeButton.Secondary -> Pair(MaterialTheme.colorScheme.secondaryContainer, null)
+                        TypeButton.Tertiary -> {
+                            val color =
+                                if (!isDarkTheme) MaterialTheme.colorScheme.primary else null
+                            Pair(MaterialTheme.colorScheme.tertiaryContainer, color)
+                        }
+                    }
                     MCButton(
                         symbol = button.symbol,
                         onClick = {
                             onEvent(button.event)
                         },
+                        containerColor = containerColor,
+                        contentColor = contentColor,
                     )
                 }
             }
@@ -68,7 +81,10 @@ fun CalculatorContent(
 @Composable
 private fun CalculatorContentPreview() {
     MiniCalculatorTheme {
-        Surface(modifier = Modifier.fillMaxSize()) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background,
+        ) {
             CalculatorContent(modifier = Modifier.padding(16.dp), state = CalculatorState(lhs = "1,287"), onEvent = {})
         }
     }
@@ -78,7 +94,9 @@ private fun CalculatorContentPreview() {
 @Composable
 private fun CalculatorContentDarkPreview() {
     MiniCalculatorTheme {
-        Surface(modifier = Modifier.fillMaxSize()) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+        ) {
             CalculatorContent(modifier = Modifier.padding(16.dp), state = CalculatorState(lhs = "1,287"), onEvent = {})
         }
     }
